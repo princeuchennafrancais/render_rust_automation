@@ -11,11 +11,11 @@ COPY . .
 RUN cargo build --release
 
 # Create a new smaller image for running the application
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 # Install required libraries for the Rust application
 RUN apt-get update && apt-get install -y \
-    libssl-dev \
+    libssl3 \
     pkg-config \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
